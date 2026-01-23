@@ -1,22 +1,27 @@
-
 import React from 'react';
 
 const Preloader: React.FC = () => {
   return (
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-burgundy">
       <div className="relative flex flex-col items-center animate-fade-in">
-        {/* Official Logo Replacement - Much Bigger */}
+        {/* Logo oficial con ruta relativa */}
         <div className="mb-12 relative w-80 h-80 flex items-center justify-center">
            <img 
-             src="/logo-caporal.png" 
+             src="logo-caporal.png" 
              alt="Caporal 1961 Logo" 
              className="w-full h-full object-contain brightness-0 invert opacity-95 animate-pulse"
              onError={(e) => {
                (e.target as HTMLImageElement).style.display = 'none';
-               (e.target as HTMLImageElement).parentElement!.innerHTML += '<div class="font-serif text-6xl text-bone tracking-tighter uppercase">CAPORAL</div>';
+               const parent = (e.target as HTMLImageElement).parentElement;
+               if (parent && !parent.querySelector('.fallback-loader')) {
+                 const div = document.createElement('div');
+                 div.className = 'fallback-loader font-serif text-6xl text-bone tracking-tighter uppercase';
+                 div.innerText = 'CAPORAL';
+                 parent.appendChild(div);
+               }
              }}
            />
-           {/* Decorative ring - Adjusted to logo size */}
+           {/* Anillo decorativo */}
            <div className="absolute inset-0 border-[1px] border-bone/10 rounded-full scale-110 animate-ping"></div>
         </div>
 

@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react';
-// Fix: Suppress module member errors for react-router-dom
 // @ts-ignore
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, User, ShoppingBag, UtensilsCrossed } from 'lucide-react';
@@ -26,16 +24,22 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
   return (
     <nav className="fixed w-full z-50 bg-deepBlack text-bone border-b border-burgundy/40 shadow-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-32"> {/* Altura elegante h-32 */}
-          {/* Brand Logo - Large but balanced */}
+        <div className="flex justify-between items-center h-32">
+          {/* Brand Logo - Usamos ruta relativa para asegurar carga en Vercel */}
           <Link to="/" className="flex items-center gap-4 group h-full py-4">
              <img 
-               src="/logo-caporal.png" 
+               src="logo-caporal.png" 
                alt="Caporal 1961 Logo" 
                className="h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(128,0,32,0.4)]" 
                onError={(e) => {
                  (e.target as HTMLImageElement).style.display = 'none';
-                 (e.target as HTMLImageElement).parentElement!.innerHTML += '<span class="font-serif text-3xl tracking-tighter uppercase text-bone">CAPORAL <span class="text-burgundy">1961</span></span>';
+                 const parent = (e.target as HTMLImageElement).parentElement;
+                 if (parent && !parent.querySelector('.fallback-text')) {
+                   const span = document.createElement('span');
+                   span.className = 'fallback-text font-serif text-3xl tracking-tighter uppercase text-bone';
+                   span.innerHTML = 'CAPORAL <span class="text-burgundy">1961</span>';
+                   parent.appendChild(span);
+                 }
                }}
              />
           </Link>
