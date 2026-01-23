@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
           {/* Brand Logo - Usamos ruta relativa para asegurar carga en Vercel */}
           <Link to="/" className="flex items-center gap-4 group h-full py-4">
              <img 
-               src="logo-caporal.png" 
+               src="/logo-caporal.png" 
                alt="Caporal 1961 Logo" 
                className="h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(128,0,32,0.4)]" 
                onError={(e) => {
