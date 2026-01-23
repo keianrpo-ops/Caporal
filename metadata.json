@@ -1,0 +1,7 @@
+{
+  "name": "Caporal 1961 - Cocina de Autor",
+  "description": "Plataforma gastronómica de lujo para el restaurante Caporal 1961, con sistema de reservas, menú interactivo y panel administrativo.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
