@@ -1,10 +1,12 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import ReservationForm from '../components/ReservationForm';
 import { ChefHat, History, Award, Star, ArrowRight, MapPin, Dog, Leaf, Camera, Coffee, Compass } from 'lucide-react';
 // @ts-ignore
 import { Link } from 'react-router-dom';
+// Importamos la imagen como un módulo para asegurar que Vercel la incluya en el build
+// @ts-ignore
+import ritualCampoImg from '../ritual-campo.jpg';
 
 const Home: React.FC = () => {
   const scrollToSection = (id: string) => {
@@ -96,13 +98,13 @@ const Home: React.FC = () => {
             <div className="relative">
               <div className="absolute inset-0 border-[20px] border-white/5 -m-10 z-0"></div>
               
-              {/* === LA RUTA AHORA APUNTA A TU ARCHIVO LOCAL === */}
+              {/* === AHORA USAMOS LA IMPORTACIÓN OFICIAL === */}
               <img 
-                src="/ritual-campo.jpg" 
+                src={ritualCampoImg} 
                 className="relative z-10 w-full h-[650px] object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-1000 shadow-3xl"
                 alt="Caporal 1961 - Experiencia Ritual del Campo"
                 onError={(e) => {
-                  // Fallback por si aún no has movido la foto
+                  // Fallback final por seguridad absoluta
                   (e.target as HTMLImageElement).src = "https://ecoparadisepereira.com/wp-content/uploads/2023/11/Eco-Paradise-Habitaciones-Suite.jpg";
                 }}
               />
