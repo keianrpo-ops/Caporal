@@ -1,13 +1,15 @@
 import React from 'react';
+// @ts-ignore
+import logoCaporal from '../logo-caporal.png';
 
 const Preloader: React.FC = () => {
   return (
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-burgundy">
       <div className="relative flex flex-col items-center animate-fade-in">
-        {/* Logo oficial con ruta relativa */}
+        {/* Logo oficial importado */}
         <div className="mb-12 relative w-80 h-80 flex items-center justify-center">
            <img 
-             src="/logo-caporal.png" 
+             src={logoCaporal} 
              alt="Caporal 1961 Logo" 
              className="w-full h-full object-contain brightness-0 invert opacity-95 animate-pulse"
              onError={(e) => {

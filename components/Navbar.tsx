@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 // @ts-ignore
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, User, ShoppingBag, UtensilsCrossed } from 'lucide-react';
+// Importamos el logo directamente para que Vercel lo reconozca
+// @ts-ignore
+import logoCaporal from '../logo-caporal.png';
 
 interface NavbarProps {
   user: any;
@@ -25,10 +28,10 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     <nav className="fixed w-full z-50 bg-deepBlack text-bone border-b border-burgundy/40 shadow-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-32">
-          {/* Brand Logo - Usamos ruta relativa para asegurar carga en Vercel */}
+          {/* Brand Logo - Usando la importación oficial */}
           <Link to="/" className="flex items-center gap-4 group h-full py-4">
              <img 
-               src="/logo-caporal.png" 
+               src={logoCaporal} 
                alt="Caporal 1961 Logo" 
                className="h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(128,0,32,0.4)]" 
                onError={(e) => {
@@ -67,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             ))}
           </div>
 
-          {/* User Icons & Online Order */}
+          {/* Icons Area */}
           <div className="flex items-center gap-6">
             <Link 
               to="/menu" 
