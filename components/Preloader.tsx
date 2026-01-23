@@ -7,7 +7,7 @@ const Preloader: React.FC = () => {
         {/* Logo oficial con ruta relativa */}
         <div className="mb-12 relative w-80 h-80 flex items-center justify-center">
            <img 
-             src="logo-caporal.png" 
+             src="/logo-caporal.png" 
              alt="Caporal 1961 Logo" 
              className="w-full h-full object-contain brightness-0 invert opacity-95 animate-pulse"
              onError={(e) => {
