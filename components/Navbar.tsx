@@ -25,21 +25,21 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
   const isActive = (path: string) => location.pathname === path || (location.hash && path.includes(location.hash));
 
   return (
-    <nav className="fixed w-full z-50 bg-deepBlack text-bone border-b border-burgundy/40 shadow-2xl">
+    <nav className="fixed w-full z-50 bg-deepBlack/95 backdrop-blur-md text-bone border-b border-white/5 shadow-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-32">
-          {/* Brand Logo - Usando la importación oficial */}
+        <div className="flex justify-between items-center h-24">
+          {/* Brand Logo - Tamaño más equilibrado */}
           <Link to="/" className="flex items-center gap-4 group h-full py-4">
              <img 
                src={logoCaporal} 
                alt="Caporal 1961 Logo" 
-               className="h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(128,0,32,0.4)]" 
+               className="h-72 w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(128,0,32,0.4)]" 
                onError={(e) => {
                  (e.target as HTMLImageElement).style.display = 'none';
                  const parent = (e.target as HTMLImageElement).parentElement;
                  if (parent && !parent.querySelector('.fallback-text')) {
                    const span = document.createElement('span');
-                   span.className = 'fallback-text font-serif text-3xl tracking-tighter uppercase text-bone';
+                   span.className = 'fallback-text font-serif text-xl tracking-tighter uppercase text-bone';
                    span.innerHTML = 'CAPORAL <span class="text-burgundy">1961</span>';
                    parent.appendChild(span);
                  }
@@ -61,7 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     }, 100);
                   }
                 }}
-                className={`transition-all hover:text-burgundy tracking-[0.2em] text-[11px] font-black uppercase border-b-2 border-transparent hover:border-burgundy pb-2 ${
+                className={`transition-all hover:text-burgundy tracking-[0.2em] text-[10px] font-black uppercase border-b-2 border-transparent hover:border-burgundy pb-2 ${
                   isActive(link.path) ? 'text-burgundy border-burgundy' : 'text-bone/70'
                 }`}
               >
@@ -74,31 +74,30 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
           <div className="flex items-center gap-6">
             <Link 
               to="/menu" 
-              className="hidden lg:flex items-center gap-3 bg-burgundy px-6 py-3 rounded-sm text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-burgundy transition-all shadow-lg"
+              className="hidden lg:flex items-center gap-3 bg-burgundy px-5 py-2.5 rounded-sm text-[9px] font-black uppercase tracking-widest hover:bg-white hover:text-burgundy transition-all shadow-lg"
             >
-              <UtensilsCrossed size={14} />
-              Pedido en Línea
+              <UtensilsCrossed size={12} />
+              Pedido Online
             </Link>
 
             <Link to={user ? "/perfil" : "/auth"} className="text-stone-400 hover:text-burgundy transition-all flex items-center gap-3 group">
-              <div className={`p-2 rounded-full border border-stone-800 transition-all group-hover:border-burgundy ${user ? 'bg-burgundy/20 border-burgundy text-burgundy' : ''}`}>
-                <User size={20} />
+              <div className={`p-1.5 rounded-full border border-stone-800 transition-all group-hover:border-burgundy ${user ? 'bg-burgundy/20 border-burgundy text-burgundy' : ''}`}>
+                <User size={18} />
               </div>
               <div className="hidden lg:flex flex-col items-start leading-none">
-                <span className="text-[9px] uppercase tracking-widest font-black group-hover:text-bone transition-colors">
+                <span className="text-[8px] uppercase tracking-widest font-black group-hover:text-bone transition-colors">
                   {user ? 'Mi Cuenta' : 'Ingresar'}
                 </span>
-                <span className="text-[8px] text-stone-500 italic mt-1 font-serif tracking-widest">Club Caporal</span>
               </div>
             </Link>
             
-            <Link to="/menu" className="relative text-stone-400 hover:text-burgundy transition-all p-2 rounded-full border border-stone-800 hover:border-burgundy">
-              <ShoppingBag size={20} />
+            <Link to="/menu" className="relative text-stone-400 hover:text-burgundy transition-all p-1.5 rounded-full border border-stone-800 hover:border-burgundy">
+              <ShoppingBag size={18} />
             </Link>
 
             <div className="xl:hidden">
               <button onClick={() => setIsOpen(!isOpen)} className="text-bone hover:text-burgundy p-2 transition-transform active:scale-90">
-                {isOpen ? <X size={28} /> : <Menu size={28} />}
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
           </div>
